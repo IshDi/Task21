@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +14,23 @@ public class Main {
         people.add(new Person("Сергей", "Просто Петров", 15));
         people.add(new Person("Дарья", "Сорокина", 23));
         System.out.println(people);
-        Collections.sort(people, new PersonsSurnameLengthComparator(3));
+
+        Comparator<Person> comparator = (Person o1, Person o2) -> {
+            int maxLength = 3;
+            int lengthSurnameo1 = o1.getSurname().split("[ -]+").length;
+            int lengthSurnameo2 = o2.getSurname().split("[ -]+").length;
+            if (lengthSurnameo1 > maxLength) {
+                lengthSurnameo1 = maxLength;
+            }
+            if (lengthSurnameo2 > maxLength) {
+                lengthSurnameo2 = maxLength;
+            }
+            if (lengthSurnameo1 == lengthSurnameo2) {
+                return Integer.compare(o2.getAge(), o1.getAge());
+            }
+            return Integer.compare(lengthSurnameo2, lengthSurnameo1);
+        };
+        Collections.sort(people, comparator);
         System.out.println(people);
     }
 }
