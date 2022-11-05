@@ -1,6 +1,5 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +12,8 @@ public class Main {
         people.add(new Person("Сергей", "Просто Петров", 15));
         people.add(new Person("Дарья", "Сорокина", 23));
         System.out.println(people);
-        Collections.sort(people, new PersonsSurnameLengthComparator(3));
+
+        people.removeIf(age -> age.getAge() < 18);
         System.out.println(people);
     }
 }
