@@ -15,7 +15,7 @@ public class Main {
         people.add(new Person("Дарья", "Сорокина", 23));
         System.out.println(people);
 
-        Comparator<Person> comparator = (Person o1, Person o2) -> {
+        Comparator<Person> comparator = (o1, o2) -> {
             int maxLength = 3;
             int lengthSurnameo1 = o1.getSurname().split("[ -]+").length;
             int lengthSurnameo2 = o2.getSurname().split("[ -]+").length;
